@@ -1,0 +1,425 @@
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('/fonts/opensans-regular-webfont.eot');
+    src: url('/fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/opensans-regular-webfont.woff') format('woff'),
+    url('/fonts/opensans-regular-webfont.ttf') format('truetype'),
+    url('/fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'gorditasregular';
+    src: url('/fonts/gorditas-regular-webfont.eot');
+    src: url('/fonts/gorditas-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/gorditas-regular-webfont.woff') format('woff'),
+    url('/fonts/gorditas-regular-webfont.ttf') format('truetype'),
+    url('/fonts/gorditas-regular-webfont.svg#gorditasregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sans_semiboldregular';
+    src: url('/fonts/opensans-semibold-webfont.eot');
+    src: url('/fonts/opensans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/opensans-semibold-webfont.woff') format('woff'),
+    url('/fonts/opensans-semibold-webfont.ttf') format('truetype'),
+    url('/fonts/opensans-semibold-webfont.svg#open_sans_semiboldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'open_sans_semibolditalic';
+    src: url('/fonts/opensans-semibolditalic-webfont.eot');
+    src: url('/fonts/opensans-semibolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/opensans-semibolditalic-webfont.woff') format('woff'),
+    url('/fonts/opensans-semibolditalic-webfont.ttf') format('truetype'),
+    url('/fonts/opensans-semibolditalic-webfont.svg#open_sans_semibolditalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: open_sans_semiboldregular, sans-serif;
+    margin: 0;
+    background-color: #344041;
+}
+
+.bg-color-dg {
+    background-color: #2f3a3b;
+}
+
+.navbar a:hover {
+    color: #5b6668;
+}
+
+#image {
+    border-radius: 10px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.text-color-gw {
+    color: ghostwhite;
+}
+
+.text-color-dg {
+    color: #2f3a3b;
+}
+
+.text-color-lg {
+    color: #5b6668;
+}
+
+.icons a:hover {
+    opacity: 50%;
+}
+
+.facebook {
+    display: inline-block;
+    background: url("images/icons8-facebook-48.png") no-repeat;
+    width: 48px;
+    height: 48px;
+}
+
+.instagram {
+    display: inline-block;
+    background: url("images/icons8-instagram-48.png") no-repeat;
+    width: 48px;
+    height: 48px;
+}
+
+.gmail {
+    display: inline-block;
+    background: url("images/icons8-gmail-48.png") no-repeat;
+    width: 48px;
+    height: 48px;
+}
+
+.text-box-1 {
+    background-color: #4b5759;
+    display: inline-block;
+    padding: 2% 3%;
+    border-radius: 5px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.bg-color-lg {
+    background-color: #5b6668;
+}
+
+.text-paragraph {
+    color: ghostwhite;
+    text-align: justify;
+    font-family: open_sansregular, sans-serif;
+    line-height: 20px;
+}
+
+.text-box-2 {
+    background-color: #344041;
+    color: ghostwhite;
+    display: inline-block;
+    padding: 2% 3%;
+    border-radius: 5px;
+    font-family: open_sansregular, sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.link1 {
+    text-decoration: none;
+    color: ghostwhite;
+    padding: 1% 2%;
+    white-space: nowrap;
+    border-radius: 3px;
+}
+
+.link1:hover {
+    background-color: #5b6668;
+}
+
+.card {
+    background-color: #5B6668!important;
+    border-radius: 10px;
+    padding: 85px 2% 0;
+    color: ghostwhite;
+}
+
+.card h2 {
+    display: inline-block;
+    font-family: open_sansregular, sans-serif;
+    font-weight: bold;
+    color: #2f3a3b;
+}
+
+#web-development {
+    background: url("images/icons8-code-file-64 (1).png") 15px 20px no-repeat;
+}
+
+#programing {
+    background: url("images/icons8-code-file-64.png") 15px 20px no-repeat;
+}
+
+#graphic-design {
+    background: url("images/icons8-edit-file-64.png") 15px 20px no-repeat;
+}
+
+#video-editing {
+    background: url("images/icons8-video-file-64.png") 15px 20px no-repeat;
+}
+
+#photo-editing {
+    background: url("images/icons8-image-file-64.png") 15px 20px no-repeat;
+}
+
+#photo-video {
+    background: url("images/icons8-happy-file-64.png") 15px 20px no-repeat;
+}
+
+.website-card {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.website-card:hover div:first-of-type{
+    filter: blur(0);
+}
+
+.text h1, .text h2 {
+    margin: 0;
+}
+
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: filter 0.3s ease;
+    filter: blur(5px);
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+#game-of-thrones {
+    background: url("images/screenshot.png") -148px 0 no-repeat;
+    background-size: 160%;
+}
+
+#featured {
+    background: url("images/screenshot2.png") -150px 0 no-repeat;
+    background-size: 160%;
+}
+
+#uncovered {
+    background:url("images/screenshot3.png") 0 0 no-repeat;
+    background-size: 100%;
+}
+
+#animation {
+    background:url("images/screenshot4.png") -144px 0 no-repeat;
+    background-size: 160%;
+}
+
+#chess {
+    background:url("images/screenshot5.png") -145px 0 no-repeat;
+    background-size: 160%;
+}
+
+#cartoon {
+    background:url("images/screenshot6.png") -48px 0 no-repeat;
+    background-size: 120%;
+}
+
+#tiktactoe {
+    background:url("images/Screenshot20.jpg") 50% 0 no-repeat;
+    background-size: 220%;
+}
+
+#bingo {
+    background:url("images/Screenshot7.jpg") 0 0 no-repeat;
+    background-size: 140%;
+}
+
+#flights {
+    background:url("images/Screenshot8.jpg") 0 0 no-repeat;
+    background-size: 160%;
+}
+
+#runners {
+    background:url("images/Screenshot9.jpg") 0 0 no-repeat;
+    background-size: 160%;
+}
+#memory {
+    background:url("images/Screenshot10.jpg") 0 0 no-repeat;
+    background-size: 138%;
+}
+
+#minmaxavg {
+    background:url("images/Screenshot11.jpg") 0 0 no-repeat;
+    background-size: 190%;
+}
+
+#number-guesser {
+    background:url("images/Screenshot12.jpg") 0 0 no-repeat;
+    background-size: 190%;
+}
+
+#shapes-drawing {
+    background:url("images/Screenshot13.jpg") 0 0 no-repeat;
+    background-size: 190%;
+}
+
+#shapes-moving {
+    background:url("images/Screenshot14.jpg") 0 0 no-repeat;
+    background-size: 190%;
+}
+
+#snowflakes {
+    background:url("images/Screenshot15.jpg") 0 0 no-repeat;
+    background-size: 170%;
+}
+
+#squares {
+    background:url("images/Screenshot16.jpg") 0 0 no-repeat;
+    background-size: 170%;
+}
+
+#students {
+    background:url("images/Screenshot17.jpg") 0 0 no-repeat;
+    background-size: 170%;
+}
+
+#tables {
+    background:url("images/Screenshot18.jpg") 0 0 no-repeat;
+    background-size: 180%;
+}
+
+#text-coloring {
+    background:url("images/Screenshot19.jpg") 0 0 no-repeat;
+    background-size: 170%;
+}
+
+.hidden {
+    display: none;
+}
+
+.text {
+    position: relative;
+    z-index: 1;
+    padding: 13rem 6rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 576px) {
+    .text {
+        position: relative;
+        z-index: 1;
+        padding: 8rem 7rem;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+}
+
+iframe {
+    border-radius: 20px;
+}
+
+#name, #email {
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid ghostwhite;
+    color: #5b6668;
+}
+
+#subject {
+    width: 100%;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid ghostwhite;
+    margin: 1% 0;
+    color: #5b6668;
+}
+
+textarea {
+    border-radius: 3px;
+    border: 1px solid ghostwhite;
+    color: #5b6668;
+    font-family: open_sansregular sans-serif;
+    padding: 2px;
+}
+
+.social {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 20px;
+}
+
+.social a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #5b6668;
+}
+
+.social a:hover {
+    color: ghostwhite;
+}
+
+footer h2 {
+    color: ghostwhite;
+    font-weight: bolder;
+    filter: drop-shadow(3px 3px #2f3a3b);
+}
+
+#services-ul {
+    list-style-type: "➜";
+    color: black;
+}
+
+#services-ul a {
+    text-decoration: none;
+    color: ghostwhite;
+    font-family: "open_sansregular", sans-serif;
+}
+
+#services-ul a:hover {
+    opacity: 60%;
+}
+
+#contact-ul {
+    list-style: none;
+    padding-left: 0;
+    color: ghostwhite;
+    font-family: "open_sansregular", sans-serif;
+}
+
+#contact-ul li:first-of-type {
+    background: url("images/icons8-map-48.png") no-repeat;
+    background-size: 24px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+}
+
+#contact-ul li:nth-of-type(2) {
+    background: url("images/icons8-phone-48.png") no-repeat;
+    background-size: 24px;
+    padding-left: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+#contact-ul li:last-of-type {
+    background: url("images/icons8-paper-airplane-48.png") no-repeat;
+    background-size: 24px;
+    padding-left: 30px;
+    height: 30px;
+}
