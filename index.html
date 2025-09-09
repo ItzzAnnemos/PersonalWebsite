@@ -115,18 +115,82 @@
             </a></li>
         </ul>
 
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2">
             <label>
                 <input type="text" placeholder="Search"
                        class="hidden md:block px-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all">
             </label>
             <button id="themeToggle"
-                    class="inline-flex p-3 rounded-full bg-white/20 dark:bg-gray-700/50 hover:bg-primary-500/20 transition-all hover:scale-110">
+                    class="inline-flex p-3 rounded-full border dark:border-none bg-white/20 dark:bg-gray-700/50 hover:bg-primary-500/20 transition-all hover:scale-110">
                 <span class="material-icons"></span>
+            </button>
+            <button id="mobileMenuToggle"
+                    class="inline-flex md:hidden p-3 border dark:border-none rounded-full bg-white/20 dark:bg-gray-700/50 hover:bg-primary-500/20 transition-all hover:scale-110">
+                <span class="material-icons">more_vert</span>
             </button>
         </div>
     </div>
 </nav>
+
+<div id="drawerOverlay" class="drawer-overlay fixed inset-0 bg-black/50 z-40 md:hidden"></div>
+
+<!-- Mobile Drawer -->
+<div id="mobileDrawer" class="drawer fixed top-0 right-0 h-full w-80 max-w-[80vw] bg-white dark:bg-slate-800 z-50 md:hidden shadow-2xl">
+    <div class="flex flex-col h-full">
+        <!-- Drawer Header -->
+        <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+            <h2 class="text-xl font-bold text-gradient">Navigation</h2>
+            <button id="closeDrawer" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                <span class="material-icons text-2xl">close</span>
+            </button>
+        </div>
+
+        <!-- Search in Mobile -->
+        <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+            <label>
+                <input type="text" placeholder="Search"
+                       class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+            </label>
+        </div>
+
+        <!-- Drawer Navigation -->
+        <nav class="flex-1 p-6">
+            <ul class="space-y-4">
+                <li>
+                    <a href="#about" class="drawer-link flex items-center py-3 px-4 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors group">
+                        <span class="material-icons mr-3 text-blue-500">person</span>
+                        <span class="font-medium group-hover:text-blue-500">About</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#services" class="drawer-link flex items-center py-3 px-4 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors group">
+                        <span class="material-icons mr-3 text-blue-500">work</span>
+                        <span class="font-medium group-hover:text-blue-500">Services</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#portfolio" class="drawer-link flex items-center py-3 px-4 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors group">
+                        <span class="material-icons mr-3 text-blue-500">folder</span>
+                        <span class="font-medium group-hover:text-blue-500">Portfolio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact" class="drawer-link flex items-center py-3 px-4 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors group">
+                        <span class="material-icons mr-3 text-blue-500">contact_mail</span>
+                        <span class="font-medium group-hover:text-blue-500">Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Drawer Footer -->
+        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
+            <div class="text-sm text-gray-500 dark:text-gray-400 text-center">
+                © 2023 Nikola's Personal Website
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Hero Section -->
 <section class="min-h-screen gradient-bg flex items-center pt-24">
@@ -793,6 +857,147 @@
             // Call the new infinite type effect function
             infiniteTypeEffect(titleElement, 'Nikola Serafimov');
         }
+    });
+
+    class MobileNavigation {
+        constructor() {
+            this.drawer = document.getElementById('mobileDrawer');
+            this.overlay = document.getElementById('drawerOverlay');
+            this.menuToggle = document.getElementById('mobileMenuToggle');
+            this.closeButton = document.getElementById('closeDrawer');
+            this.hamburger = this.menuToggle.querySelector('.hamburger');
+            this.drawerLinks = document.querySelectorAll('.drawer-link');
+
+            this.isOpen = false;
+            this.startX = 0;
+            this.currentX = 0;
+            this.isDragging = false;
+
+            this.init();
+        }
+
+        init() {
+            // Button event listeners
+            this.menuToggle.addEventListener('click', () => this.toggleDrawer());
+            this.closeButton.addEventListener('click', () => this.closeDrawer());
+            this.overlay.addEventListener('click', () => this.closeDrawer());
+
+            // Close drawer when clicking navigation links
+            this.drawerLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    this.closeDrawer();
+                    // Smooth scroll to section
+                    const targetId = link.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Touch gestures
+            this.initTouchGestures();
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && this.isOpen) {
+                    this.closeDrawer();
+                }
+            });
+
+            // Prevent body scroll when drawer is open
+            document.addEventListener('touchmove', (e) => {
+                if (this.isOpen && !this.drawer.contains(e.target)) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        }
+
+        initTouchGestures() {
+            // Touch start
+            document.addEventListener('touchstart', (e) => {
+                this.startX = e.touches[0].clientX;
+                this.currentX = this.startX;
+
+                // Check if starting from edge for swipe to open
+                if (!this.isOpen && this.startX > window.innerWidth - 20) {
+                    this.isDragging = true;
+                }
+                // Check if swiping on drawer for swipe to close
+                else if (this.isOpen && this.drawer.contains(e.target)) {
+                    this.isDragging = true;
+                }
+            }, { passive: true });
+
+            // Touch move
+            document.addEventListener('touchmove', (e) => {
+                if (!this.isDragging) return;
+
+                this.currentX = e.touches[0].clientX;
+                const deltaX = this.currentX - this.startX;
+
+                if (!this.isOpen) {
+                    // Swiping from right edge to open
+                    if (deltaX < -50) { // Swipe left from edge
+                        this.openDrawer();
+                        this.isDragging = false;
+                    }
+                } else {
+                    // Swiping to close when drawer is open
+                    if (deltaX > 50) { // Swipe right to close
+                        this.closeDrawer();
+                        this.isDragging = false;
+                    }
+                }
+            }, { passive: true });
+
+            // Touch end
+            document.addEventListener('touchend', () => {
+                this.isDragging = false;
+            }, { passive: true });
+        }
+
+        toggleDrawer() {
+            if (this.isOpen) {
+                this.closeDrawer();
+            } else {
+                this.openDrawer();
+            }
+        }
+
+        openDrawer() {
+            this.isOpen = true;
+            this.drawer.classList.add('open');
+            this.overlay.classList.add('open');
+            this.hamburger.classList.add('active');
+
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+
+            // Focus management for accessibility
+            this.drawer.setAttribute('aria-hidden', 'false');
+            this.closeButton.focus();
+        }
+
+        closeDrawer() {
+            this.isOpen = false;
+            this.drawer.classList.remove('open');
+            this.overlay.classList.remove('open');
+            this.hamburger.classList.remove('active');
+
+            // Restore body scroll
+            document.body.style.overflow = '';
+
+            // Focus management for accessibility
+            this.drawer.setAttribute('aria-hidden', 'true');
+            this.menuToggle.focus();
+        }
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        new MobileNavigation();
+        new ThemeManager();
     });
 </script>
 </body>
