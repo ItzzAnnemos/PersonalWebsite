@@ -82,13 +82,12 @@
 <section class="min-h-screen gradient-bg flex items-center pt-24">
     <div class="container mx-auto px-6">
         <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="animate-slide-up">
+            <div class="animate-slide-up min-h-screen">
                 <div class="bg-primary-500/20 text-primary-300 px-4 py-2 rounded-full inline-flex mb-6 text-sm font-semibold items-center gap-2">
                     <span class="material-icons">waving_hand</span> Hi There!
                 </div>
                 <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                    I am <br/>
-                    <span class="text-gradient">Nikola Serafimov</span>
+                    I am <span class="text-gradient">Nikola Serafimov</span>
                 </h1>
                 <h2 class="text-2xl md:text-3xl text-gray-600 dark:text-white/80 mb-6 font-light">
                     A Computer Science Student
@@ -125,7 +124,7 @@
                 </div>
             </div>
 
-            <div class="">
+            <div>
                 <div class="relative">
                     <div class="absolute inset-0 bg-gradient-to-r from-primary-500 to-accent rounded-3xl blur-3xl opacity-30"></div>
                     <img src="images/ACE_6528 OK.jpg" alt="Nikola Serafimov"
@@ -600,7 +599,7 @@
             if (index < visibleCount) {
                 grid.innerHTML += `
                     <a href="${item.link}" target="_blank" class="rounded-full transition-colors">
-                        <div class="portfolio-card h-56 md:h-80 rounded-2xl flex items-center justify-center text-white relative overflow-hidden group cursor-pointer card-hover" data-index="${index}"
+                        <div class="portfolio-card h-40 md:h-80 rounded-2xl flex items-center justify-center text-white relative overflow-hidden group cursor-pointer card-hover" data-index="${index}"
                                      style="background-image: url('${item.image}'); background-size: cover; background-position: center;">
                             <div class="text-center z-10">
                                 <h3 class="text-xl font-bold mb-2">${item.title}</h3>
