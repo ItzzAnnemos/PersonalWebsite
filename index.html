@@ -116,11 +116,12 @@
         </ul>
 
         <div class="flex items-center gap-3">
-            <input type="text" placeholder="Search"
-                   class="hidden md:block px-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all">
+            <label>
+                <input type="text" placeholder="Search"
+                       class="hidden md:block px-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 bg-white/80 dark:bg-gray-800/80 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all">
+            </label>
             <button id="themeToggle"
-                    class="inline-flex p-3 rounded-full bg-white/20 dark:bg-gray-700/50 hover:bg-primary-500/20 transition-all hover:scale-110"
-                    onclick="switchTheme()">
+                    class="inline-flex p-3 rounded-full bg-white/20 dark:bg-gray-700/50 hover:bg-primary-500/20 transition-all hover:scale-110">
                 <span class="material-icons"></span>
             </button>
         </div>
@@ -400,15 +401,19 @@
 
                 <form class="space-y-4">
                     <div class="grid md:grid-cols-2 gap-4">
-                        <input type="text" placeholder="Name" id="name"
-                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
-                        <input type="email" placeholder="Email" id="email"
-                               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <label for="name">
+                            <input type="text" placeholder="Name" id="name"
+                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        </label>
+                        <label for="email">
+                            <input type="email" placeholder="Email" id="email"
+                                   class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        </label>
                     </div>
-                    <input type="text" placeholder="Subject" id="subject"
-                           class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
-                    <textarea rows="5" placeholder="Write a message" id="message"
-                              class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"></textarea>
+                    <label for="subject"></label><input type="text" placeholder="Subject" id="subject"
+                                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                    <label for="message"></label><textarea rows="5" placeholder="Write a message" id="message"
+                                                           class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"></textarea>
                 </form>
 
                 <button onclick="sendEmail()"
@@ -724,14 +729,7 @@
         const message = document.getElementById("message").value;
 
         const body = `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`;
-        const mailtoUrl = `mailto:serafimovnikola582@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        window.location.href = mailtoUrl;
-    }
-
-    // Mobile menu toggle (if needed in future)
-    function toggleMobileMenu() {
-        // Implementation for mobile menu
+        window.location.href = `mailto:serafimovnikola582@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 
     // Add loading animation
@@ -741,7 +739,7 @@
 
     // Parallax effect for hero section
     window.addEventListener('scroll', function () {
-        const scrolled = window.pageYOffset;
+        const scrolled = window.scrollY;
         const hero = document.querySelector('.gradient-bg');
         if (hero) {
             hero.style.transform = `translateY(${scrolled * 0.1}px)`;
@@ -768,8 +766,7 @@
         let isDeleting = false;
 
         function loop() {
-            const currentText = text.substring(0, textIndex);
-            element.innerHTML = currentText;
+            element.innerHTML = text.substring(0, textIndex);
 
             let currentSpeed = isDeleting ? deletingSpeed : typingSpeed;
 
